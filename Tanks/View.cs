@@ -23,10 +23,23 @@ namespace Tanks
 
         public void Drow(PaintEventArgs e)
         {
-            e.Graphics.DrawImage(model.Tank.Image, new Point(model.Tank.X, model.Tank.Y));
-
-            Thread.Sleep(model.gameSpeed);
+            DrowWall(e);
+            DrowTank(e);
+            Thread.Sleep(model.GameSpeed);
             Invalidate();
+        }
+
+        private void DrowTank(PaintEventArgs e)
+        {
+            for (int i = 0; i < model.AmountTanks; i++)
+                e.Graphics.DrawImage(model.Tanks[i].Img, new Point(model.Tanks[i].X, model.Tanks[i].Y));
+        }
+
+        private void DrowWall(PaintEventArgs e)
+        {
+            for (int x = 20; x < 500; x += 40)
+                for (int y = 20; y < 500; y += 40)
+                    e.Graphics.DrawImage(model.Wall._img, new Point(x, y));
         }
 
         protected override void OnPaint(PaintEventArgs e)

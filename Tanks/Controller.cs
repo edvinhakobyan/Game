@@ -14,9 +14,9 @@ namespace Tanks
     public partial class Controller : Form
     {
         private const int fieldSize = 500;
-        private const int amountTanks = 5;
+        private const int amountTanks = 20;
         private const int amountsApples = 5;
-        private const int gameSpeed = 50;
+        private const int gameSpeed = 40;
 
         public Controller() : this(fieldSize) { }
 
@@ -41,15 +41,16 @@ namespace Tanks
         {
 
 
-            if (model.GameStatus == GameStatus.Play)
+            if (model.GameStatus == GameStatusEnum.Play)
             {
                 thread.Abort();
-                model.GameStatus = GameStatus.Stop;
+                model.GameStatus = GameStatusEnum.Stop;
             }
             else
             {
-                model.GameStatus = GameStatus.Play;
+                model.GameStatus = GameStatusEnum.Play;
                 thread = new Thread(() => model.Play());
+                thread.IsBackground = true;
                 thread.Start();
                 view.Invalidate();
             }

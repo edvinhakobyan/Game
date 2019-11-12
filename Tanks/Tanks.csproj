@@ -52,17 +52,26 @@
     <Compile Include="Controller.Designer.cs">
       <DependentUpon>Controller.cs</DependentUpon>
     </Compile>
-    <Compile Include="GameStatus.cs" />
+    <Compile Include="DirectionEnum.cs" />
+    <Compile Include="GameStatusEnum.cs" />
+    <Compile Include="Interfaces\ICollision.cs" />
+    <Compile Include="Interfaces\IRun.cs" />
+    <Compile Include="Interfaces\ITakeApple.cs" />
+    <Compile Include="Interfaces\ITransparent.cs" />
+    <Compile Include="Interfaces\ITurn.cs" />
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Tank.cs" />
+    <Compile Include="TankImg.cs" />
     <Compile Include="View.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View.Designer.cs">
       <DependentUpon>View.cs</DependentUpon>
     </Compile>
+    <Compile Include="Wall.cs" />
+    <Compile Include="WallImg.cs" />
     <EmbeddedResource Include="Controller.resx">
       <DependentUpon>Controller.cs</DependentUpon>
     </EmbeddedResource>
@@ -96,7 +105,67 @@
     <None Include="Resources\MainIcon.ico" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\Wall.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg0_1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg0_1I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg0_1II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg0_1III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg0_1IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
     <None Include="Resources\TankImg01.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg01I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg01II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg01III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg01IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg_10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg_10I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg_10II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg_10III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg_10IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg10I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg10II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg10III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\TankImg10IV.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

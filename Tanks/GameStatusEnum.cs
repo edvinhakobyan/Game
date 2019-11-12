@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    public enum GameStatus
+    public enum GameStatusEnum
     {
         Play,
         Stop,
