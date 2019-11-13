@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    public enum GameStatusEnum
+    public enum TankDirection
     {
-        Play,
-        Stop,
-        Luzer,
-        Win
+        Up = 0,
+        Down,
+        Left,
+        Right
     }
 }

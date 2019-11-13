@@ -17,8 +17,9 @@ namespace Tanks
 
 
         public List<Tank> Tanks;
+        public List<Apple> Apples;
         public Wall Wall;
-        public GameStatusEnum GameStatus;
+        public GameStatus GameStatus;
 
         public Model(int fieldSize, int amountTanks, int amountsApples, int gameSpeed)
         {
@@ -29,15 +30,34 @@ namespace Tanks
             rand = new Random();
 
             Tanks = new List<Tank>();
+            CrateTanksList(Tanks);
 
-            while(Tanks.Count < amountTanks)
+            Apples = new List<Apple>();
+            CreateAppleList(Apples);
+
+
+            Wall = new Wall();
+            GameStatus = GameStatus.Stop;
+        }
+
+        private void CreateAppleList(List<Apple> apples)
+        {
+            while (Apples.Count < AmountsApples)
             {
-                Tank tank = new Tank(rand.Next(13) * 40, rand.Next(13) * 40, (DirectionEnum)rand.Next(5));
+                Apple apple = new Apple(rand.Next(24) * 20, rand.Next(24) * 20);
+                if (!(apples.Contains(apple) && (apple.X + apple.Y) % 40 == 0 ))
+                    apples.Add(apple);
+            }
+        }
+
+        private void CrateTanksList(List<Tank> tanks)
+        {
+            while (Tanks.Count < AmountTanks)
+            {
+                Tank tank = new Tank(rand.Next(13) * 40, rand.Next(13) * 40, (TankDirection)rand.Next(4));
                 if (!Tanks.Contains(tank))
                     Tanks.Add(tank);
             }
-            Wall = new Wall();
-            GameStatus = GameStatusEnum.Stop;
         }
 
         public void Play()
@@ -55,28 +75,22 @@ namespace Tanks
 
         private void CheckCollision()
         {
-            for (int i = 0; i < AmountTanks; i++)
+            for (int i = 0; i < AmountTanks - 1; i++)
             {
                 for (int j = i + 1; j < AmountTanks; j++)
                 {
-                    if (Tanks[i].Dir == DirectionEnum.Right && Tanks[j].Dir == DirectionEnum.Left ||
-                        Tanks[j].Dir == DirectionEnum.Right && Tanks[i].Dir == DirectionEnum.Left)
+                    if (((Tanks[i].Dir == TankDirection.Right && Tanks[j].Dir == TankDirection.Left) ||
+                        (Tanks[i].Dir == TankDirection.Left && Tanks[j].Dir == TankDirection.Right)) &&
+                        (Math.Abs(Tanks[i].X - Tanks[j].X) <= 20 && Tanks[i].Y == Tanks[j].Y) ||
+                        ((Tanks[i].Dir == TankDirection.Up && Tanks[j].Dir == TankDirection.Down) ||
+                        (Tanks[i].Dir == TankDirection.Down && Tanks[j].Dir == TankDirection.Up)) &&
+                        (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= 20 && Tanks[i].X == Tanks[j].X))
                     {
-                        if (Math.Abs(Tanks[i].X - Tanks[j].X) == 20)
-                        {
-                            Tanks[i].TurnArround();
-                            Tanks[j].TurnArround();
-                        }
+                        Tanks[i].TurnArround();
+                        Tanks[j].TurnArround();
                     }
-                    if (Tanks[i].Dir == DirectionEnum.Down && Tanks[j].Dir == DirectionEnum.Up ||
-                        Tanks[j].Dir == DirectionEnum.Down && Tanks[i].Dir == DirectionEnum.Up)
-                    {
-                        if (Math.Abs(Tanks[i].Y - Tanks[j].Y) == 20)
-                        {
-                            Tanks[i].TurnArround();
-                            Tanks[j].TurnArround();
-                        }
-                    }
+
+                  //((Math.Abs(Tanks[i].Y - Tanks[j].Y) <= 20 && Math.Abs(Tanks[i].X - Tanks[j].X) <= 20)
                 }
             }
         }

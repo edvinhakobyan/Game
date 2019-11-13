@@ -41,16 +41,18 @@ namespace Tanks
         {
 
 
-            if (model.GameStatus == GameStatusEnum.Play)
+            if (model.GameStatus == GameStatus.Play)
             {
                 thread.Abort();
-                model.GameStatus = GameStatusEnum.Stop;
+                model.GameStatus = GameStatus.Stop;
             }
             else
             {
-                model.GameStatus = GameStatusEnum.Play;
-                thread = new Thread(() => model.Play());
-                thread.IsBackground = true;
+                model.GameStatus = GameStatus.Play;
+                thread = new Thread(() => model.Play())
+                {
+                    IsBackground = true
+                };
                 thread.Start();
                 view.Invalidate();
             }

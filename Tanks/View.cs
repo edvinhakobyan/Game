@@ -24,9 +24,16 @@ namespace Tanks
         public void Drow(PaintEventArgs e)
         {
             DrowWall(e);
+            DrowApples(e);
             DrowTank(e);
             Thread.Sleep(model.GameSpeed);
             Invalidate();
+        }
+
+        private void DrowApples(PaintEventArgs e)
+        {
+            for (int i = 0; i < model.AmountsApples; i++)
+                e.Graphics.DrawImage(model.Apples[i].Img, new Point(model.Apples[i].X, model.Apples[i].Y));
         }
 
         private void DrowTank(PaintEventArgs e)
@@ -39,7 +46,7 @@ namespace Tanks
         {
             for (int x = 20; x < 500; x += 40)
                 for (int y = 20; y < 500; y += 40)
-                    e.Graphics.DrawImage(model.Wall._img, new Point(x, y));
+                    e.Graphics.DrawImage(model.Wall.Img, new Point(x, y));
         }
 
         protected override void OnPaint(PaintEventArgs e)

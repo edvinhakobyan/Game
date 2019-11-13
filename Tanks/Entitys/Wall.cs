@@ -10,14 +10,11 @@ namespace Tanks
     public class Wall
     {
         WallImg _wallImg = new WallImg();
-        public Image _img;
-
-        public int X { get; set; }
-        public int Y { get; set; }
+        public Image Img;
 
         public Wall()
         {
-            _img = _wallImg.img;
+            Img = _wallImg.img;
         }
     }
 }

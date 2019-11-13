@@ -46,14 +46,16 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="ImagesClass\AppleImg.cs" />
+    <Compile Include="Entitys\Apple.cs" />
     <Compile Include="Controller.cs">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="Controller.Designer.cs">
       <DependentUpon>Controller.cs</DependentUpon>
     </Compile>
-    <Compile Include="DirectionEnum.cs" />
-    <Compile Include="GameStatusEnum.cs" />
+    <Compile Include="Enums\DirectionEnum.cs" />
+    <Compile Include="Enums\GameStatusEnum.cs" />
     <Compile Include="Interfaces\ICollision.cs" />
     <Compile Include="Interfaces\IRun.cs" />
     <Compile Include="Interfaces\ITakeApple.cs" />
@@ -62,16 +64,16 @@
     <Compile Include="Model.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Tank.cs" />
-    <Compile Include="TankImg.cs" />
+    <Compile Include="Entitys\Tank.cs" />
+    <Compile Include="ImagesClass\TankImg.cs" />
     <Compile Include="View.cs">
       <SubType>UserControl</SubType>
     </Compile>
     <Compile Include="View.Designer.cs">
       <DependentUpon>View.cs</DependentUpon>
     </Compile>
-    <Compile Include="Wall.cs" />
-    <Compile Include="WallImg.cs" />
+    <Compile Include="Entitys\Wall.cs" />
+    <Compile Include="ImagesClass\WallImg.cs" />
     <EmbeddedResource Include="Controller.resx">
       <DependentUpon>Controller.cs</DependentUpon>
     </EmbeddedResource>
@@ -166,6 +168,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\TankImg10IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Apple.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

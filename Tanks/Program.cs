@@ -14,6 +14,7 @@ namespace Tanks
         [STAThread]
         static void Main(string[] arg)
         {
+
             List<int> param = new List<int>();
             if (arg.Length > 4 || !GetArgs(arg, param))
             {

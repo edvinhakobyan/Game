@@ -1,16 +1,14 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
 namespace Tanks
 {
-    public enum DirectionEnum
+    class AppleImg
     {
-        Up,
-        Down,
-        Left,
-        Right
+        public Image img = Properties.Resources.Apple;
     }
 }
