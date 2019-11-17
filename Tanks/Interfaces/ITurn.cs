@@ -9,5 +9,6 @@ namespace Tanks
     interface ITurn
     {
          void Turn();
+         void TurnArround();
     }
 }

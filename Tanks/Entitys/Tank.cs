@@ -7,7 +7,7 @@ using System.Drawing;
 
 namespace Tanks
 {
-    public class Tank : IRun, ITurn, ITransparent, ICollision, IEquatable<Tank>
+    public class Tank : IPicture, IRun, ITurn, ITransparent, IEquatable<Tank>
     {
         Random rand;
         TankImg _tankImg = new TankImg();
@@ -15,7 +15,7 @@ namespace Tanks
         public Image Img { get; private set; }
 
 
-        public Tank(int x, int y, TankDirection dir)
+        public Tank(int x, int y, DirectionEnum dir)
         {
             imgArray = _tankImg.getImage(dir);
             PutCurrentImage();
@@ -25,7 +25,8 @@ namespace Tanks
             Dir = dir;
         }
 
-        public TankDirection Dir { get; set; }
+
+        public DirectionEnum Dir { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
@@ -34,9 +35,9 @@ namespace Tanks
         {
             PutCurrentImage();
 
-            if (Dir == TankDirection.Up) Y--;
-            else if (Dir == TankDirection.Down) Y++;
-            else if (Dir == TankDirection.Right) X++;
+            if (Dir == DirectionEnum.Up) Y--;
+            else if (Dir == DirectionEnum.Down) Y++;
+            else if (Dir == DirectionEnum.Right) X++;
             else X--;
 
             if (X % 40 == 0 && Y % 40 == 0)
@@ -55,19 +56,19 @@ namespace Tanks
         public void Turn()
         {
             int zar = rand.Next(10000);
-            if (Dir == TankDirection.Up || Dir == TankDirection.Down)
+            if (Dir == DirectionEnum.Up || Dir == DirectionEnum.Down)
             {
                 if (zar > 7500)
-                    Dir = TankDirection.Left;
+                    Dir = DirectionEnum.Left;
                 else if (zar < 2500)
-                    Dir = TankDirection.Right;
+                    Dir = DirectionEnum.Right;
             }
             else
             {
                 if (zar > 7500)
-                    Dir = TankDirection.Up;
+                    Dir = DirectionEnum.Up;
                 else if (zar < 2500)
-                    Dir = TankDirection.Down;
+                    Dir = DirectionEnum.Down;
             }
             imgArray = _tankImg.getImage(Dir);
         }
@@ -86,14 +87,14 @@ namespace Tanks
 
         public void TurnArround()
         {
-            if (Dir == TankDirection.Up)
-                Dir = TankDirection.Down;
-            else if (Dir == TankDirection.Down)
-                Dir = TankDirection.Up;
-            else if (Dir == TankDirection.Left)
-                Dir = TankDirection.Right;
+            if (Dir == DirectionEnum.Up)
+                Dir = DirectionEnum.Down;
+            else if (Dir == DirectionEnum.Down)
+                Dir = DirectionEnum.Up;
+            else if (Dir == DirectionEnum.Left)
+                Dir = DirectionEnum.Right;
             else
-                Dir = TankDirection.Left;
+                Dir = DirectionEnum.Left;
 
             imgArray = _tankImg.getImage(Dir);
         }

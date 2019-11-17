@@ -56,12 +56,13 @@
     </Compile>
     <Compile Include="Enums\DirectionEnum.cs" />
     <Compile Include="Enums\GameStatusEnum.cs" />
-    <Compile Include="Interfaces\ICollision.cs" />
+    <Compile Include="Interfaces\Ipicture.cs" />
     <Compile Include="Interfaces\IRun.cs" />
-    <Compile Include="Interfaces\ITakeApple.cs" />
     <Compile Include="Interfaces\ITransparent.cs" />
     <Compile Include="Interfaces\ITurn.cs" />
     <Compile Include="Model.cs" />
+    <Compile Include="Entitys\Packman.cs" />
+    <Compile Include="ImagesClass\PackmanImg.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Entitys\Tank.cs" />
@@ -171,6 +172,66 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Apple.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg01.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg01I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg01II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg01III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg01IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg_10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg_10I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg_10II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg_10III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg_10IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg10I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg10II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg10III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg10IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg0_1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg0_1I.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg0_1II.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg0_1III.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PackmanImg0_1IV.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

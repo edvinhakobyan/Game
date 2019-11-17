@@ -40,6 +40,7 @@
             this.MinimumSize = new System.Drawing.Size(500, 500);
             this.Name = "View";
             this.Size = new System.Drawing.Size(500, 500);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.View_KeyPress);
             this.ResumeLayout(false);
 
         }

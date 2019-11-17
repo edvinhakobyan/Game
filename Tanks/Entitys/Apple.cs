@@ -7,10 +7,10 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    public class Apple
+    public class Apple : IPicture
     {
         AppleImg _wallImg = new AppleImg();
-        public Image Img;
+        public Image Img { get; }
 
         public int X { get; set; }
         public int Y { get; set; }

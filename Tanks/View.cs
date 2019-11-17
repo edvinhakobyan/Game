@@ -26,8 +26,14 @@ namespace Tanks
             DrowWall(e);
             DrowApples(e);
             DrowTank(e);
+            DrowPackman(e);
             Thread.Sleep(model.GameSpeed);
             Invalidate();
+        }
+
+        private void DrowPackman(PaintEventArgs e)
+        {
+            e.Graphics.DrawImage(model.packman.Img, new Point(model.packman.X, model.packman.Y));
         }
 
         private void DrowApples(PaintEventArgs e)
@@ -54,5 +60,20 @@ namespace Tanks
             Drow(e);
         }
 
+        private void View_KeyPress(object sender, KeyPressEventArgs e)
+        {
+                if (model.packman.X % 40 == 0 && model.packman.Y % 40 == 0)
+                {
+                    switch (e.KeyChar.ToString().ToLower())
+                    {
+                        case "a": model.packman.Dir = DirectionEnum.Left; break;
+                        case "d": model.packman.Dir = DirectionEnum.Right; break;
+                        case "w": model.packman.Dir = DirectionEnum.Up; break;
+                        case "s": model.packman.Dir = DirectionEnum.Down; break;
+                        default: break;
+                    }
+                }
+            
+        }
     }
 }

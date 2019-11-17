@@ -14,9 +14,9 @@ namespace Tanks
     public partial class Controller : Form
     {
         private const int fieldSize = 500;
-        private const int amountTanks = 20;
-        private const int amountsApples = 5;
-        private const int gameSpeed = 40;
+        private const int amountTanks = 10;
+        private const int amountsApples = 20;
+        private const int gameSpeed = 20;
 
         public Controller() : this(fieldSize) { }
 
@@ -39,8 +39,6 @@ namespace Tanks
 
         private  void button1_Click(object sender, EventArgs e)
         {
-
-
             if (model.GameStatus == GameStatus.Play)
             {
                 thread.Abort();
@@ -56,15 +54,38 @@ namespace Tanks
                 thread.Start();
                 view.Invalidate();
             }
-
-
-
         }
 
         private void Controller_FormClosed(object sender, FormClosedEventArgs e)
         {
             if(thread != null)
             thread.Abort();
+        }
+
+        private void button1_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            myMathod(e);
+        }
+
+        private void Controller_KeyPress(object sender, KeyPressEventArgs e)
+        {
+            myMathod(e);
+        }
+
+
+        void myMathod(KeyPressEventArgs e)
+        {
+            if (model.packman.X % 40 == 0 && model.packman.Y % 40 == 0)
+            {
+                switch (e.KeyChar.ToString().ToLower())
+                {
+                    case "a": model.packman.Dir = DirectionEnum.Left; break;
+                    case "d": model.packman.Dir = DirectionEnum.Right; break;
+                    case "w": model.packman.Dir = DirectionEnum.Up; break;
+                    case "s": model.packman.Dir = DirectionEnum.Down; break;
+                    default: break;
+                }
+            }
         }
     }
 }

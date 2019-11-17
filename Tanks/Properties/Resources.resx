@@ -124,6 +124,66 @@
   <data name="MainIcon" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\MainIcon.ico;System.Drawing.Icon, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>
+  <data name="PackmanImgD_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg01.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgD_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg01I.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgD_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg01II.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgD_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg01III.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgD_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg01IV.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgL_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg_10.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgL_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg_10I.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgL_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg_10II.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgL_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg_10III.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgL_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg_10IV.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgR_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg10.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgR_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg10I.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgR_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg10II.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgR_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg10III.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgR_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg10IV.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgU_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg0_1.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgU_2" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg0_1I.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgU_3" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg0_1II.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgU_4" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg0_1III.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
+  <data name="PackmanImgU_5" type="System.Resources.ResXFileRef, System.Windows.Forms">
+    <value>..\Resources\PackmanImg0_1IV.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
+  </data>
   <data name="TankImgD_1" type="System.Resources.ResXFileRef, System.Windows.Forms">
     <value>..\Resources\TankImg01.bmp;System.Drawing.Bitmap, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a</value>
   </data>

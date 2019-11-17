@@ -6,13 +6,13 @@ namespace Tanks
 {
     public class TankImg
     {
-        public  Image[] getImage(TankDirection direction)
+        public  Image[] getImage(DirectionEnum direction)
         {
-            if (direction == TankDirection.Up)
+            if (direction == DirectionEnum.Up)
                 return Up;
-            else if(direction == TankDirection.Down)
+            else if(direction == DirectionEnum.Down)
                 return Down;
-            else if (direction == TankDirection.Left)
+            else if (direction == DirectionEnum.Left)
                 return Left;
             else 
                 return Right;

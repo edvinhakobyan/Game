@@ -7,14 +7,17 @@ using System.Threading.Tasks;
 
 namespace Tanks
 {
-    public class Wall
+    public class Wall : IPicture
     {
         WallImg _wallImg = new WallImg();
-        public Image Img;
+
+        public Image Img { get; }
 
         public Wall()
         {
             Img = _wallImg.img;
         }
+
+
     }
 }

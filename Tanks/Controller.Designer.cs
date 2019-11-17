@@ -41,6 +41,7 @@
             this.button1.Text = "Start/Stop";
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.button1.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.button1_KeyPress);
             // 
             // Controller
             // 
@@ -55,6 +56,7 @@
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "Tanks";
             this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.Controller_FormClosed);
+            this.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.Controller_KeyPress);
             this.ResumeLayout(false);
 
         }
