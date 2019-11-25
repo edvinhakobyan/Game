@@ -14,8 +14,8 @@ namespace Tanks
     public partial class Controller : Form
     {
         private const int fieldSize = 500;
-        private const int amountTanks = 10;
-        private const int amountsApples = 20;
+        private const int amountTanks = 4;
+        private const int amountsApples = 10;
         private const int gameSpeed = 20;
 
         public Controller() : this(fieldSize) { }
@@ -32,9 +32,10 @@ namespace Tanks
         public Controller(int fieldSize, int amountTanks, int amountsApples, int gameSpeed)
         {
             InitializeComponent();
-            model = new Model( fieldSize,  amountTanks,  amountsApples,  gameSpeed);
+            model = new Model(fieldSize, amountTanks, amountsApples, gameSpeed);
             view = new View(model);
             this.Controls.Add(view);
+
         }
 
         private  void button1_Click(object sender, EventArgs e)
@@ -64,28 +65,31 @@ namespace Tanks
 
         private void button1_KeyPress(object sender, KeyPressEventArgs e)
         {
-            myMathod(e);
+            PackmanController(e);
+
         }
 
         private void Controller_KeyPress(object sender, KeyPressEventArgs e)
         {
-            myMathod(e);
+            PackmanController(e);
         }
 
 
-        void myMathod(KeyPressEventArgs e)
+        void PackmanController(KeyPressEventArgs e)
         {
-            if (model.packman.X % 40 == 0 && model.packman.Y % 40 == 0)
+            switch (e.KeyChar.ToString().ToLower())
             {
-                switch (e.KeyChar.ToString().ToLower())
-                {
-                    case "a": model.packman.Dir = DirectionEnum.Left; break;
-                    case "d": model.packman.Dir = DirectionEnum.Right; break;
-                    case "w": model.packman.Dir = DirectionEnum.Up; break;
-                    case "s": model.packman.Dir = DirectionEnum.Down; break;
-                    default: break;
-                }
+                case "a": model.packman.nextDir = DirectionEnum.Left; break;
+                case "d": model.packman.nextDir = DirectionEnum.Right; break;
+                case "w": model.packman.nextDir = DirectionEnum.Up; break;
+                case "s": model.packman.nextDir = DirectionEnum.Down; break;
+                default: break;
             }
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }

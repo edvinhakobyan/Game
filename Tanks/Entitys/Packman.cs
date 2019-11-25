@@ -24,11 +24,13 @@ namespace Tanks
             PutCurrentImage();
             X = x;
             Y = y;
-            Dir = dir;
+            currentDir = dir;
+            nextDir = currentDir;
         }
 
 
-        public DirectionEnum Dir { get; set; }
+        public DirectionEnum currentDir { get; set; }
+        public DirectionEnum nextDir { get; set; }
         public int X { get; set; }
         public int Y { get; set; }
 
@@ -37,12 +39,15 @@ namespace Tanks
         {
             PutCurrentImage();
 
-            if (Dir == DirectionEnum.Up) Y--;
-            else if (Dir == DirectionEnum.Down) Y++;
-            else if (Dir == DirectionEnum.Right) X++;
+
+            if (currentDir == DirectionEnum.Up) Y--;
+            else if (currentDir == DirectionEnum.Down) Y++;
+            else if (currentDir == DirectionEnum.Right) X++;
             else X--;
+
             Turn();
             Transparent();
+            imgArray = _packmanImg.getImage(currentDir);
         }
 
         int ImgIndex = 1;
@@ -54,7 +59,16 @@ namespace Tanks
 
         public void Turn()
         {
-            imgArray = _packmanImg.getImage(Dir);
+            if (X % 40 == 0 && Y % 40 == 0)
+            {
+                if ((currentDir == DirectionEnum.Up && nextDir != DirectionEnum.Down) ||
+                   (currentDir == DirectionEnum.Down && nextDir != DirectionEnum.Up) ||
+                   (currentDir == DirectionEnum.Right && nextDir != DirectionEnum.Left) ||
+                   (currentDir == DirectionEnum.Left && nextDir != DirectionEnum.Right))
+                {
+                    currentDir = nextDir;
+                }
+            }
         }
 
         public void Transparent()

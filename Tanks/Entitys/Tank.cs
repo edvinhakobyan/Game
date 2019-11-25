@@ -9,10 +9,11 @@ namespace Tanks
 {
     public class Tank : IPicture, IRun, ITurn, ITransparent, IEquatable<Tank>
     {
-        Random rand;
-        TankImg _tankImg = new TankImg();
-        Image[] imgArray;
+        protected Random rand;
+        protected TankImg _tankImg = new TankImg();
+        protected Image[] imgArray;
         public Image Img { get; private set; }
+        public Snaryad snaryad;
 
 
         public Tank(int x, int y, DirectionEnum dir)
@@ -26,22 +27,44 @@ namespace Tanks
         }
 
 
-        public DirectionEnum Dir { get; set; }
+        public void CreateSnaryad(int v)
+        {
+            snaryad = new Snaryad(X, Y, Dir, v);
+        }
+
+
+        public DirectionEnum Dir{ get; set; }
         public int X { get; set; }
         public int Y { get; set; }
+
 
 
         public void Run()
         {
             PutCurrentImage();
 
-            if (Dir == DirectionEnum.Up) Y--;
-            else if (Dir == DirectionEnum.Down) Y++;
-            else if (Dir == DirectionEnum.Right) X++;
-            else X--;
+            if (Dir == DirectionEnum.Up)
+            {
+                Y--;
+            }
+            else if (Dir == DirectionEnum.Down)
+            {
+                Y++;
+            }
+            else if (Dir == DirectionEnum.Right)
+            {
+                X++;
+            }
+            else
+            {
+                X--;
+            }
 
             if (X % 40 == 0 && Y % 40 == 0)
                 Turn();
+
+            if (snaryad != null &&  (snaryad.X < 0 || snaryad.X > 500 || snaryad.Y < 0 || snaryad.Y > 500))
+                snaryad = null;
 
             Transparent();
         }
@@ -53,7 +76,7 @@ namespace Tanks
             if (ImgIndex == imgArray.Length) ImgIndex = 0;
         }
 
-        public void Turn()
+        public virtual void Turn()
         {
             int zar = rand.Next(10000);
             if (Dir == DirectionEnum.Up || Dir == DirectionEnum.Down)

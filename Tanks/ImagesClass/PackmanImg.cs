@@ -3,7 +3,7 @@ using Tanks.Properties;
 
 namespace Tanks
 {
-    internal class PackmanImg
+    public class PackmanImg
     {
         public Image[] getImage(DirectionEnum direction)
         {

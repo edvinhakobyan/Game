@@ -46,6 +46,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Entitys\Hanter.cs" />
+    <Compile Include="Entitys\Snaryad.cs" />
     <Compile Include="ImagesClass\AppleImg.cs" />
     <Compile Include="Entitys\Apple.cs" />
     <Compile Include="Controller.cs">
@@ -56,6 +58,7 @@
     </Compile>
     <Compile Include="Enums\DirectionEnum.cs" />
     <Compile Include="Enums\GameStatusEnum.cs" />
+    <Compile Include="ImagesClass\SnaryadImg.cs" />
     <Compile Include="Interfaces\Ipicture.cs" />
     <Compile Include="Interfaces\IRun.cs" />
     <Compile Include="Interfaces\ITransparent.cs" />
@@ -232,6 +235,21 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PackmanImg0_1IV.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Projectile_10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Projectile0_1.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Projectile01.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Projectile10.bmp" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\O.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

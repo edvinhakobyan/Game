@@ -83,6 +83,16 @@ namespace Tanks.Properties {
         /// <summary>
         ///   Looks up a localized resource of type System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap O {
+            get {
+                object obj = ResourceManager.GetObject("O", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap PackmanImgD_1 {
             get {
                 object obj = ResourceManager.GetObject("PackmanImgD_1", resourceCulture);
@@ -276,6 +286,46 @@ namespace Tanks.Properties {
         internal static System.Drawing.Bitmap PackmanImgU_5 {
             get {
                 object obj = ResourceManager.GetObject("PackmanImgU_5", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProjectileD {
+            get {
+                object obj = ResourceManager.GetObject("ProjectileD", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProjectileL {
+            get {
+                object obj = ResourceManager.GetObject("ProjectileL", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProjectileR {
+            get {
+                object obj = ResourceManager.GetObject("ProjectileR", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized resource of type System.Drawing.Bitmap.
+        /// </summary>
+        internal static System.Drawing.Bitmap ProjectileU {
+            get {
+                object obj = ResourceManager.GetObject("ProjectileU", resourceCulture);
                 return ((System.Drawing.Bitmap)(obj));
             }
         }

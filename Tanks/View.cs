@@ -19,16 +19,18 @@ namespace Tanks
         {
             this.model = model;
             InitializeComponent();
+
         }
 
-        public void Drow(PaintEventArgs e)
+        private void DrowRectangle(PaintEventArgs e)
         {
-            DrowWall(e);
-            DrowApples(e);
-            DrowTank(e);
-            DrowPackman(e);
-            Thread.Sleep(model.GameSpeed);
-            Invalidate();
+            e.Graphics.DrawRectangle(new Pen(Brushes.White), 0, 0, 500, 500);
+            label2.Text = model.AppleCount.ToString();
+            label4.Text = model.AppleCount.ToString();
+            label1.Refresh();
+            label2.Refresh();
+            label3.Refresh();
+            label4.Refresh();
         }
 
         private void DrowPackman(PaintEventArgs e)
@@ -45,7 +47,9 @@ namespace Tanks
         private void DrowTank(PaintEventArgs e)
         {
             for (int i = 0; i < model.AmountTanks; i++)
+            {
                 e.Graphics.DrawImage(model.Tanks[i].Img, new Point(model.Tanks[i].X, model.Tanks[i].Y));
+            }
         }
 
         private void DrowWall(PaintEventArgs e)
@@ -57,23 +61,24 @@ namespace Tanks
 
         protected override void OnPaint(PaintEventArgs e)
         {
-            Drow(e);
+            DrowWall(e);
+            DrowApples(e);
+            DrowTank(e);
+            DrowSnaryads(e);
+            DrowPackman(e);
+            DrowRectangle(e);
+            Thread.Sleep(model.GameSpeed);
+            Invalidate();
         }
 
-        private void View_KeyPress(object sender, KeyPressEventArgs e)
+        private void DrowSnaryads(PaintEventArgs e)
         {
-                if (model.packman.X % 40 == 0 && model.packman.Y % 40 == 0)
-                {
-                    switch (e.KeyChar.ToString().ToLower())
-                    {
-                        case "a": model.packman.Dir = DirectionEnum.Left; break;
-                        case "d": model.packman.Dir = DirectionEnum.Right; break;
-                        case "w": model.packman.Dir = DirectionEnum.Up; break;
-                        case "s": model.packman.Dir = DirectionEnum.Down; break;
-                        default: break;
-                    }
-                }
-            
+            for (int i = 0; i < model.AmountTanks; i++)
+            {
+                try { e.Graphics.DrawImage(model.Tanks[i].snaryad.Img, new Point(model.Tanks[i].snaryad.X, model.Tanks[i].snaryad.Y)); }
+                catch { }
+
+            }
         }
     }
 }

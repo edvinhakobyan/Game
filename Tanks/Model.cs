@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Windows.Forms;
 
 namespace Tanks
 {
@@ -19,8 +20,11 @@ namespace Tanks
         public Packman packman;
         public List<Tank> Tanks;
         public List<Apple> Apples;
+        public Hanter Hanter;
+
 
         public GameStatus GameStatus;
+        public int AppleCount;
 
         public Model(int fieldSize, int amountTanks, int amountsApples, int gameSpeed)
         {
@@ -30,15 +34,18 @@ namespace Tanks
             GameSpeed = gameSpeed;
             rand = new Random();
 
+
             Wall = new Wall();
 
+            packman = new Packman(7 * 40, 23 * 20, DirectionEnum.Up);
+
             Tanks = new List<Tank>();
+            Hanter = new Hanter(rand.Next(13) * 40, rand.Next(13) * 40, (DirectionEnum)rand.Next(4), packman);
+            Tanks.Add(Hanter);
             CrateTanksList(Tanks);
 
             Apples = new List<Apple>();
             CreateAppleList(Apples);
-
-            packman = new Packman(7 * 40, 23 * 20, DirectionEnum.Up);
 
             GameStatus = GameStatus.Stop;
         }
@@ -80,80 +87,95 @@ namespace Tanks
             {
 
                 foreach (var Tank in Tanks)
+                {
                     Tank.Run();
+                    if (Tank.snaryad == null)
+                        Tank.CreateSnaryad(2);
+
+                        Tank.snaryad.Run();
+                }
 
                 packman.Run();
 
                 CheckCollision();
-                
-                Thread.Sleep(GameSpeed);
+
+               
+
+                PackmanEatApple();
+
+                if (PackmanTanksCollision() || CheckSnaryadCollision())
+                {
+                    MessageBox.Show("--Game Over--");
+                    break;
+                }
+
+                Thread.Sleep(20);
             }
         }
-        int tol = 20;
+
+        private bool CheckSnaryadCollision()
+        {
+            foreach (var t in Tanks)
+            {
+                if (t.snaryad == null) return true;
+                if(Math.Abs(t.snaryad.X - packman.X) < 10 && Math.Abs(t.snaryad.Y - packman.Y) < 10)
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private bool PackmanTanksCollision()
+        {
+            for (int i = 0; i < Tanks.Count; i++)
+            {
+                if((Math.Abs(packman.X - Tanks[i].X) <= 20) && (Math.Abs(packman.Y - Tanks[i].Y) <= 20))
+                {
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        private void PackmanEatApple()
+        {
+            for (int i = 0; i < Apples.Count; i++)
+            {
+                if((Math.Abs(packman.X - Apples[i].X) < 20 && packman.Y == Apples[i].Y) ||
+                   (Math.Abs(packman.Y - Apples[i].Y) < 20 && packman.X == Apples[i].X))
+                {
+                    while(true)
+                    {
+                        Apple apple = new Apple(rand.Next(24) * 20, rand.Next(24) * 20);
+
+                        if (!(Apples.Contains(apple) || (apple.X + apple.Y) % 40 == 0) || (apple.X % 40 == 0 && apple.Y % 40 == 0) && !IsAppleOnTank(apple))
+                        {
+                            Apples[i] = apple; //TODO
+                            break;
+                        }
+                    }
+                    AppleCount++;
+                    break;
+                }
+            }
+        }
+
         private void CheckCollision()
         {
             for (int i = 0; i < AmountTanks - 1; i++)
             {
                 for (int j = i + 1; j < AmountTanks; j++)
                 {
-                    //if ((((Tanks[i].Dir == TankDirection.Right && Tanks[j].Dir == TankDirection.Left) ||
-                    //    (Tanks[i].Dir == TankDirection.Left && Tanks[j].Dir == TankDirection.Right)) && 
-                    //    (Math.Abs(Tanks[i].X - Tanks[j].X) <= tol && Tanks[i].Y == Tanks[j].Y)))   
-                    //{
-                    //    Tanks[i].TurnArround();
-                    //    Tanks[j].TurnArround();
-                    //    Tanks[i].Run(); Tanks[j].Run();
-                    //}
-                    //else if (((Tanks[i].Dir == TankDirection.Up && Tanks[j].Dir == TankDirection.Down) ||
-                    //    (Tanks[i].Dir == TankDirection.Down && Tanks[j].Dir == TankDirection.Up)) &&
-                    //    (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= tol && Tanks[i].X == Tanks[j].X))
-                    //{
-                    //    Tanks[i].TurnArround();
-                    //    Tanks[j].TurnArround();
-                    //    Tanks[i].Run(); Tanks[j].Run();
-                    //}
-                    //else if (((Tanks[i].Dir == TankDirection.Right && Tanks[j].Dir == TankDirection.Up) ||
-                    //     (Tanks[i].Dir == TankDirection.Up && Tanks[j].Dir == TankDirection.Right)) &&
-                    //     (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= tol && Math.Abs(Tanks[i].X - Tanks[j].X) <= tol))
-                    //{
-                    //    Tanks[i].TurnArround();
-                    //    Tanks[j].TurnArround();
-                    //    Tanks[i].Run(); Tanks[j].Run();
-                    //}
-                    //else if (((Tanks[i].Dir == TankDirection.Right && Tanks[j].Dir == TankDirection.Down) ||
-                    //     (Tanks[i].Dir == TankDirection.Down && Tanks[j].Dir == TankDirection.Right)) &&
-                    //     (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= tol && Math.Abs(Tanks[i].X - Tanks[j].X) <= tol))
-                    //{
-                    //    Tanks[i].TurnArround();
-                    //    Tanks[j].TurnArround();
-                    //    Tanks[i].Run(); Tanks[j].Run();
-                    //}
-                    //else if (((Tanks[i].Dir == TankDirection.Left && Tanks[j].Dir == TankDirection.Down) ||
-                    //     (Tanks[i].Dir == TankDirection.Down && Tanks[j].Dir == TankDirection.Left)) &&
-                    //     (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= tol && Math.Abs(Tanks[i].X - Tanks[j].X) <= tol))
-                    //{
-                    //    Tanks[i].TurnArround();
-                    //    Tanks[j].TurnArround();
-                    //    Tanks[i].Run(); Tanks[j].Run();
-                    //}
-                    //else if (((Tanks[i].Dir == TankDirection.Left && Tanks[j].Dir == TankDirection.Up) ||
-                    //     (Tanks[i].Dir == TankDirection.Up && Tanks[j].Dir == TankDirection.Left)) &&
-                    //     (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= tol && Math.Abs(Tanks[i].X - Tanks[j].X) <= tol))
-                    //{
-                    //    Tanks[i].TurnArround();
-                    //    Tanks[j].TurnArround();
-                    //    Tanks[i].Run(); Tanks[j].Run();
-                    //}
-
                     if((Math.Abs(Tanks[i].X - Tanks[j].X) <= 20 && Tanks[i].Y == Tanks[j].Y) ||
                        (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= 20 && Tanks[i].X == Tanks[j].X) ||
                        (Math.Abs(Tanks[i].X - Tanks[j].X) <= 20 && Math.Abs(Tanks[i].Y - Tanks[j].Y) <= 20))
                     {
                         Tanks[i].TurnArround();
                         Tanks[j].TurnArround();
-                        Tanks[i].Run(); Tanks[j].Run();
+                        Tanks[i].Run();
+                        Tanks[j].Run();
                     }
-
                 }
             }
         }

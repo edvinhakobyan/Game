@@ -28,5 +28,12 @@ namespace Tanks
                 return true;
             return false;
         }
+
+        public override bool Equals(object obj)
+        {
+            if (this.X == (obj as Apple).X && this.Y == (obj as Apple).Y)
+                return true;
+            return false;
+        }
     }
 }
