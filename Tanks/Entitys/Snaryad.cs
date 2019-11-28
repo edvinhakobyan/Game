@@ -21,7 +21,7 @@ namespace Tanks
         public DirectionEnum Dir;
         public int V;
 
-        public Snaryad(int x, int y, DirectionEnum dir, int v)
+        public Snaryad(int x, int y, DirectionEnum dir, int v = 2)
         {
             _snaryadImg = new SnaryadImg();
 

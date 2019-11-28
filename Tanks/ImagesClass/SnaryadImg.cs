@@ -23,7 +23,7 @@ namespace Tanks
         //}
         public Image getImage(DirectionEnum direction)
         {
-            return Resources.O;
+            return Resources.Snaryad;
         }
     }
 }

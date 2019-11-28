@@ -14,6 +14,7 @@ namespace Tanks
         protected Image[] imgArray;
         public Image Img { get; private set; }
         public Snaryad snaryad;
+        public bool IsShuth;
 
 
         public Tank(int x, int y, DirectionEnum dir)
@@ -24,12 +25,6 @@ namespace Tanks
             X = x;
             Y = y;
             Dir = dir;
-        }
-
-
-        public void CreateSnaryad(int v)
-        {
-            snaryad = new Snaryad(X, Y, Dir, v);
         }
 
 
@@ -63,11 +58,19 @@ namespace Tanks
             if (X % 40 == 0 && Y % 40 == 0)
                 Turn();
 
-            if (snaryad != null &&  (snaryad.X < 0 || snaryad.X > 500 || snaryad.Y < 0 || snaryad.Y > 500))
+            if(snaryad == null)
+                snaryad = new Snaryad(X, Y, Dir);
+
+            snaryad.Run();
+
+            if (snaryad.X < 0 || snaryad.X > 500 || snaryad.Y < 0 || snaryad.Y > 500)
                 snaryad = null;
+
 
             Transparent();
         }
+
+
 
         int ImgIndex = 1;
         private void PutCurrentImage()

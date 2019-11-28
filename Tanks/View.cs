@@ -40,13 +40,13 @@ namespace Tanks
 
         private void DrowApples(PaintEventArgs e)
         {
-            for (int i = 0; i < model.AmountsApples; i++)
+            for (int i = 0; i < model.Apples.Count; i++)
                 e.Graphics.DrawImage(model.Apples[i].Img, new Point(model.Apples[i].X, model.Apples[i].Y));
         }
 
         private void DrowTank(PaintEventArgs e)
         {
-            for (int i = 0; i < model.AmountTanks; i++)
+            for (int i = 0; i < model.Tanks.Count; i++)
             {
                 e.Graphics.DrawImage(model.Tanks[i].Img, new Point(model.Tanks[i].X, model.Tanks[i].Y));
             }
@@ -66,6 +66,7 @@ namespace Tanks
             DrowTank(e);
             DrowSnaryads(e);
             DrowPackman(e);
+
             DrowRectangle(e);
             Thread.Sleep(model.GameSpeed);
             Invalidate();
@@ -73,12 +74,15 @@ namespace Tanks
 
         private void DrowSnaryads(PaintEventArgs e)
         {
-            for (int i = 0; i < model.AmountTanks; i++)
+            foreach (var snaryad  in model.Tanks.Select(t => t.snaryad))
             {
-                try { e.Graphics.DrawImage(model.Tanks[i].snaryad.Img, new Point(model.Tanks[i].snaryad.X, model.Tanks[i].snaryad.Y)); }
-                catch { }
-
+                if(snaryad != null)
+                e.Graphics.DrawImage(snaryad.Img, new Point(snaryad.X, snaryad.Y));
             }
+
+            if (model.packman.snaryad != null)
+                e.Graphics.DrawImage(model.packman.snaryad.Img, new Point(model.packman.snaryad.X, model.packman.snaryad.Y));
+
         }
     }
 }

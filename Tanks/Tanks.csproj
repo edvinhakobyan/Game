@@ -249,7 +249,7 @@
     <None Include="Resources\Projectile10.bmp" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="Resources\O.bmp" />
+    <None Include="Resources\0_Snaryad.bmp" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

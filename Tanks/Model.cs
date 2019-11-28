@@ -87,38 +87,51 @@ namespace Tanks
             {
 
                 foreach (var Tank in Tanks)
-                {
                     Tank.Run();
-                    if (Tank.snaryad == null)
-                        Tank.CreateSnaryad(2);
-
-                        Tank.snaryad.Run();
-                }
 
                 packman.Run();
+                packman.SnaryadRun();
 
-                CheckCollision();
-
-               
+                CheckTanksCollision();
 
                 PackmanEatApple();
 
-                if (PackmanTanksCollision() || CheckSnaryadCollision())
-                {
-                    MessageBox.Show("--Game Over--");
-                    break;
-                }
+                //if (PackmanTanksCollision() || CheckSnaryadPackmanCollision())
+                //{
+                //    MessageBox.Show("--Game Over--");
+                //    break;
+                //}
+
+                CheckSnaryadTanksCollision();
+
 
                 Thread.Sleep(20);
             }
         }
 
-        private bool CheckSnaryadCollision()
+        private void CheckSnaryadTanksCollision()
         {
-            foreach (var t in Tanks)
+            var s = packman.snaryad;
+            if (s != null)
             {
-                if (t.snaryad == null) return true;
-                if(Math.Abs(t.snaryad.X - packman.X) < 10 && Math.Abs(t.snaryad.Y - packman.Y) < 10)
+                for (int i = 0; i < Tanks.Count; i++)
+                {
+                    if (s.X > Tanks[i].X - 5 && s.X < Tanks[i].X + 20 && s.Y > Tanks[i].Y - 5 && s.Y < Tanks[i].Y + 20)
+                    {
+                        Tanks.RemoveAt(i);
+                        packman.snaryad = null;
+                        return;
+                    }
+                }
+            }
+        }
+
+        private bool CheckSnaryadPackmanCollision()
+        {
+            foreach (var s in Tanks.Select(t => t.snaryad))
+            {
+                if (s == null) return false;
+                if (s.X > packman.X - 5 && s.X < packman.X + 20 && s.Y > packman.Y - 5 && s.Y < packman.Y + 20)
                 {
                     return true;
                 }
@@ -151,6 +164,7 @@ namespace Tanks
 
                         if (!(Apples.Contains(apple) || (apple.X + apple.Y) % 40 == 0) || (apple.X % 40 == 0 && apple.Y % 40 == 0) && !IsAppleOnTank(apple))
                         {
+                            packman.snaryadV++;
                             Apples[i] = apple; //TODO
                             break;
                         }
@@ -161,11 +175,11 @@ namespace Tanks
             }
         }
 
-        private void CheckCollision()
+        private void CheckTanksCollision()
         {
-            for (int i = 0; i < AmountTanks - 1; i++)
+            for (int i = 0; i < Tanks.Count - 1; i++)
             {
-                for (int j = i + 1; j < AmountTanks; j++)
+                for (int j = i + 1; j < Tanks.Count; j++)
                 {
                     if((Math.Abs(Tanks[i].X - Tanks[j].X) <= 20 && Tanks[i].Y == Tanks[j].Y) ||
                        (Math.Abs(Tanks[i].Y - Tanks[j].Y) <= 20 && Tanks[i].X == Tanks[j].X) ||

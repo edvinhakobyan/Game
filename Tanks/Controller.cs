@@ -14,8 +14,8 @@ namespace Tanks
     public partial class Controller : Form
     {
         private const int fieldSize = 500;
-        private const int amountTanks = 4;
-        private const int amountsApples = 10;
+        private const int amountTanks = 5;
+        private const int amountsApples = 20;
         private const int gameSpeed = 20;
 
         public Controller() : this(fieldSize) { }
@@ -40,6 +40,7 @@ namespace Tanks
 
         private  void button1_Click(object sender, EventArgs e)
         {
+            this.Focus();
             if (model.GameStatus == GameStatus.Play)
             {
                 thread.Abort();
@@ -74,22 +75,31 @@ namespace Tanks
             PackmanController(e);
         }
 
+        protected override bool ProcessCmdKey(ref Message msg, Keys keys)
+        {
+            switch (keys)
+            {
+                case Keys.Left:  { model.packman.nextDir = DirectionEnum.Left; } break;
+                case Keys.Right: { model.packman.nextDir = DirectionEnum.Right; } break;
+                case Keys.Up:    { model.packman.nextDir = DirectionEnum.Up; } break;
+                case Keys.Down: { model.packman.nextDir = DirectionEnum.Down; } break;
+                case Keys.Space: model.packman.Shuth(); break;
+                default: break;
+            }
+            return true;
+        }
 
         void PackmanController(KeyPressEventArgs e)
         {
-            switch (e.KeyChar.ToString().ToLower())
-            {
-                case "a": model.packman.nextDir = DirectionEnum.Left; break;
-                case "d": model.packman.nextDir = DirectionEnum.Right; break;
-                case "w": model.packman.nextDir = DirectionEnum.Up; break;
-                case "s": model.packman.nextDir = DirectionEnum.Down; break;
-                default: break;
-            }
-        }
-
-        private void button2_Click(object sender, EventArgs e)
-        {
-
+            //switch (e.KeyChar)
+            //{
+            //    case 'a': { model.packman.nextDir = DirectionEnum.Left; model.packman.Run(); } break;
+            //    case 'd': { model.packman.nextDir = DirectionEnum.Right; model.packman.Run(); } break;
+            //    case 'w': { model.packman.nextDir = DirectionEnum.Up; model.packman.Run(); } break;
+            //    case 's': { model.packman.nextDir = DirectionEnum.Down; model.packman.Run(); } break;
+            //    case 'q': model.packman.Shuth(); break;
+            //    default: break;
+            //}
         }
     }
 }
