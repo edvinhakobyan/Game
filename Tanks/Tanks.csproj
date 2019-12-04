@@ -251,5 +251,8 @@
   <ItemGroup>
     <None Include="Resources\0_Snaryad.bmp" />
   </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\PlayButton.gif" />
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

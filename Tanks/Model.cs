@@ -34,14 +34,17 @@ namespace Tanks
             GameSpeed = gameSpeed;
             rand = new Random();
 
+            NewGame();
+        }
 
+        internal void NewGame()
+        {
             Wall = new Wall();
-
             packman = new Packman(7 * 40, 23 * 20, DirectionEnum.Up);
-
-            Tanks = new List<Tank>();
-            Hanter = new Hanter(rand.Next(13) * 40, rand.Next(13) * 40, (DirectionEnum)rand.Next(4), packman);
-            Tanks.Add(Hanter);
+            Tanks = new List<Tank>()
+            {
+                new Hanter(rand.Next(13) * 40, rand.Next(13) * 40, (DirectionEnum)rand.Next(4), packman)
+            };
             CrateTanksList(Tanks);
 
             Apples = new List<Apple>();
@@ -54,10 +57,20 @@ namespace Tanks
         {
             while (Apples.Count < AmountsApples)
             {
-                Apple apple = new Apple(rand.Next(24) * 20, rand.Next(24) * 20);
-                if (!(apples.Contains(apple) || (apple.X + apple.Y) % 40 == 0) || (apple.X % 40 == 0 && apple.Y % 40 == 0) && !IsAppleOnTank(apple))
-                    apples.Add(apple);
+                apples.Add(CreateApple());
             }
+        }
+
+        private Apple CreateApple()
+        {
+            Apple apple = null;
+            while (true)
+            {
+                apple = new Apple(rand.Next(24) * 20, rand.Next(24) * 20);
+                if (!(Apples.Contains(apple) || (apple.X + apple.Y) % 40 == 0) || (apple.X % 40 == 0 && apple.Y % 40 == 0) && !IsAppleOnTank(apple))
+                    break;
+            }
+            return apple;
         }
 
         public bool IsAppleOnTank(Apple apple)
@@ -96,17 +109,30 @@ namespace Tanks
 
                 PackmanEatApple();
 
-                //if (PackmanTanksCollision() || CheckSnaryadPackmanCollision())
-                //{
-                //    MessageBox.Show("--Game Over--");
-                //    break;
-                //}
+                if (PackmanTanksCollision() || CheckSnaryadPackmanCollision())
+                {
+                    MessageBox.Show("--Game Over--");
+                    break;
+                }
 
                 CheckSnaryadTanksCollision();
 
-
-                Thread.Sleep(20);
+                if(YOUWIN())
+                {
+                    MessageBox.Show("--You Win--");
+                    break;
+                }
+                Thread.Sleep(GameSpeed);
             }
+        }
+
+
+
+        private bool YOUWIN()
+        {
+            if (Tanks.Count == 1)
+                return true;
+            return false;
         }
 
         private void CheckSnaryadTanksCollision()
@@ -114,7 +140,7 @@ namespace Tanks
             var s = packman.snaryad;
             if (s != null)
             {
-                for (int i = 0; i < Tanks.Count; i++)
+                for (int i = 1; i < Tanks.Count; i++)
                 {
                     if (s.X > Tanks[i].X - 5 && s.X < Tanks[i].X + 20 && s.Y > Tanks[i].Y - 5 && s.Y < Tanks[i].Y + 20)
                     {
@@ -155,22 +181,11 @@ namespace Tanks
         {
             for (int i = 0; i < Apples.Count; i++)
             {
-                if((Math.Abs(packman.X - Apples[i].X) < 20 && packman.Y == Apples[i].Y) ||
+                if ((Math.Abs(packman.X - Apples[i].X) < 20 && packman.Y == Apples[i].Y) ||
                    (Math.Abs(packman.Y - Apples[i].Y) < 20 && packman.X == Apples[i].X))
                 {
-                    while(true)
-                    {
-                        Apple apple = new Apple(rand.Next(24) * 20, rand.Next(24) * 20);
-
-                        if (!(Apples.Contains(apple) || (apple.X + apple.Y) % 40 == 0) || (apple.X % 40 == 0 && apple.Y % 40 == 0) && !IsAppleOnTank(apple))
-                        {
-                            packman.snaryadV++;
-                            Apples[i] = apple; //TODO
-                            break;
-                        }
-                    }
-                    AppleCount++;
-                    break;
+                    Apples[i] = CreateApple();
+                    packman.SnaryadV =  AppleCount++;
                 }
             }
         }

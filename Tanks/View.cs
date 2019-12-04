@@ -74,15 +74,24 @@ namespace Tanks
 
         private void DrowSnaryads(PaintEventArgs e)
         {
-            foreach (var snaryad  in model.Tanks.Select(t => t.snaryad))
+
+            for (int i = 0; i < model.Tanks.Count; i++)
             {
-                if(snaryad != null)
-                e.Graphics.DrawImage(snaryad.Img, new Point(snaryad.X, snaryad.Y));
+                //if (model.Tanks[i].snaryad != null)
+                try
+                {
+                    e.Graphics.DrawImage(model.Tanks[i].snaryad.Img, new Point(model.Tanks[i].snaryad.X, model.Tanks[i].snaryad.Y));
+                }
+                catch { }
             }
 
-            if (model.packman.snaryad != null)
-                e.Graphics.DrawImage(model.packman.snaryad.Img, new Point(model.packman.snaryad.X, model.packman.snaryad.Y));
 
+            if (model.packman.snaryad != null)
+                try
+                {
+                    e.Graphics.DrawImage(model.packman.snaryad.Img, new Point(model.packman.snaryad.X, model.packman.snaryad.Y));
+                }
+                catch { }
         }
     }
 }

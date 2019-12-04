@@ -14,9 +14,9 @@ namespace Tanks
     public partial class Controller : Form
     {
         private const int fieldSize = 500;
-        private const int amountTanks = 5;
-        private const int amountsApples = 20;
-        private const int gameSpeed = 20;
+        private const int amountTanks = 4;
+        private const int amountsApples = 40;
+        private const int gameSpeed = 30;
 
         public Controller() : this(fieldSize) { }
 
@@ -64,17 +64,6 @@ namespace Tanks
             thread.Abort();
         }
 
-        private void button1_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            PackmanController(e);
-
-        }
-
-        private void Controller_KeyPress(object sender, KeyPressEventArgs e)
-        {
-            PackmanController(e);
-        }
-
         protected override bool ProcessCmdKey(ref Message msg, Keys keys)
         {
             switch (keys)
@@ -89,17 +78,9 @@ namespace Tanks
             return true;
         }
 
-        void PackmanController(KeyPressEventArgs e)
+        private void button2_Click(object sender, EventArgs e)
         {
-            //switch (e.KeyChar)
-            //{
-            //    case 'a': { model.packman.nextDir = DirectionEnum.Left; model.packman.Run(); } break;
-            //    case 'd': { model.packman.nextDir = DirectionEnum.Right; model.packman.Run(); } break;
-            //    case 'w': { model.packman.nextDir = DirectionEnum.Up; model.packman.Run(); } break;
-            //    case 's': { model.packman.nextDir = DirectionEnum.Down; model.packman.Run(); } break;
-            //    case 'q': model.packman.Shuth(); break;
-            //    default: break;
-            //}
+            model.NewGame();
         }
     }
 }

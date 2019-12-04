@@ -14,8 +14,26 @@ namespace Tanks
         public Image Img { get; private set; }
         private bool IsShuth;
         public Snaryad snaryad;
-
-        public int snaryadV = 2;
+        private int snaryadV;
+        public int SnaryadV
+        {
+            get
+            {
+                if (snaryadV < 4)
+                    return 3;
+                else if (snaryadV >= 4 && snaryadV < 8)
+                    return 5;
+                else if (snaryadV >= 8 && snaryadV < 12)
+                    return 7;
+                else if (snaryadV >= 12 && snaryadV < 16)
+                    return 9;
+                else if (snaryadV >= 16 && snaryadV < 20)
+                    return 11;
+                else
+                    return 15;
+            }
+            set { snaryadV = value; }
+        }
 
 
         public Packman(int x, int y, DirectionEnum dir)
@@ -55,8 +73,13 @@ namespace Tanks
 
         public void SnaryadRun()
         {
-            if (snaryad != null && IsShuth)
+
+            if (IsShuth)
             {
+                if (snaryad == null)
+                    snaryad = new Snaryad(X, Y, currentDir, SnaryadV);
+
+
                 snaryad.Run();
                 if (snaryad.X < 0 || snaryad.X > 500 || snaryad.Y < 0 || snaryad.Y > 500)
                 {
@@ -70,8 +93,7 @@ namespace Tanks
         {
             if (!IsShuth)
             {
-                snaryad = new Snaryad(X, Y, currentDir);
-                IsShuth = true;
+                IsShuth = !IsShuth;
             }
         }
 
@@ -86,10 +108,10 @@ namespace Tanks
         {
             if (X % 40 == 0 && Y % 40 == 0)
             {
-                if ((currentDir == DirectionEnum.Up && nextDir != DirectionEnum.Down) ||
-                   (currentDir == DirectionEnum.Down && nextDir != DirectionEnum.Up) ||
-                   (currentDir == DirectionEnum.Right && nextDir != DirectionEnum.Left) ||
-                   (currentDir == DirectionEnum.Left && nextDir != DirectionEnum.Right))
+                if ((currentDir == DirectionEnum.Up) ||
+                   (currentDir == DirectionEnum.Down) ||
+                   (currentDir == DirectionEnum.Right) ||
+                   (currentDir == DirectionEnum.Left))
                 {
                     currentDir = nextDir;
                 }
